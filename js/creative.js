@@ -128,7 +128,7 @@ function changeState($formControl){
   }
 }
 
-let ipModel, scolor, address, floor, email, phoneNumber, instructions, name, pNumber, problems, more, dataString;
+let ipModel, phone, scolor, address, floor, email, phoneNumber, instructions, name, pNumber, problems, more, dataString;
 const mq = matchMedia('(min-width: 768px)').matches;
 //const email = $('#email').val();
 
@@ -158,7 +158,7 @@ $('.form').validate({
 
 //phone prices
 let screen, price, total;
-const turn = 0, pbutton = 0, sbutton = 0, wdamage = 0, diagnostic=29.99, cport = 44.99, fcamera = 44.99, bcamera = 44.99, wbluetoth = 44.99, hbutton = 44.99, ispeaker= 44.99, hplug = 59.99,battery = 44.99;
+const turn = 0, pbutton = 0, sbutton = 0, wdamage = 0, diagnostic=29.99, cport = 59.99, fcamera = 59.99, bcamera = 59.99, wbluetoth = 44.99, hbutton = 0, ispeaker= 59.99, hplug = 59.99,battery = 59.99;
 
 
 /* repairing process buttons */
@@ -592,7 +592,6 @@ if (mq) {
       address      =   $('#address').val();
       floor        =   $('#floor').val();
       instructions =   $('#instructions').val();
-      instructions =     $('#instructions').val();
 
       if(more == null)
         more = "";
@@ -618,7 +617,6 @@ if (mq) {
 
       submitData(dataString);
       $('#name').text(JSON.stringify(dataString.name));
-      //window.location.replace("http://ifixorlando.com/summary.html");
     }
 
   });
@@ -777,32 +775,38 @@ if ($('.final-part').is(':visible')) {
 
 //prices depending on the iphone model
 $('.phone-button input[type=radio]').change(function(){
-  let phone = $(this).val();
+  phone = $(this).val();
 
   switch (phone) {
     case '5':
     case '5C':
     case '5S':
     case 'SE':
-    screen=54.99;
+    screen=59.99;
     break;
     case '6':
-    screen=64.99;
+    screen=69.99;
     break;
     case '6Plus':
-    screen=74.99;
+    screen=69.99;
     break;
     case '6S':
     screen=89.99;
     break;
     case '6S Plus':
-    screen=119.99;
+    screen=99.99;
     break;
     case '7':
-    screen=139.99;
-    break;
     case '7 Plus':
-    screen=149.99;
+    screen=109.99;
+    break;
+    case '8':
+    case '8 Plus':
+    screen=129.99;
+    break;
+    case 'X':
+    screen=0;
+    break;
   }
 });
 $('.screen input[type=checkbox]').attr('rel',0);
@@ -810,8 +814,20 @@ $('.battery input[type=checkbox]').attr('rel',0);
 $('.turn input[type=checkbox]').attr('rel',0);
 $('.diagnostic input[type=checkbox]').attr('rel',0);
 $('.other input[type=checkbox]').attr('rel',0);
-$('.problem-button.turn input:checkbox, .problem-button.pbutton input:checkbox, .problem-button.sbutton input:checkbox, .problem-button.wdamage input:checkbox').change(function(){
-  if($('.problem-button.turn, .problem-button.pbutton, .problem-button.sbutton, .problem-button.wdamage').hasClass('active'))
+
+console.log('antes');
+console.log('phone ' + phone)
+  $('.problem-button.screen input:checkbox').change(function(){
+    if(phone == "X"){
+      if($('.problem-button.screen').hasClass('active'))
+          alert("Coming soon...");
+    }else{
+      console.log('No entro');
+    }
+  });
+
+$('.problem-button.turn input:checkbox, .problem-button.pbutton input:checkbox, .problem-button.sbutton input:checkbox, .problem-button.wdamage input:checkbox, .problem-button.hbutton input:checkbox').change(function(){
+  if($('.problem-button.turn, .problem-button.pbutton, .problem-button.sbutton, .problem-button.wdamage, .problem-button.hbutton').hasClass('active'))
     alert("To Be Determined");
 });
 $('.problem-button input:checkbox').change(function(){
