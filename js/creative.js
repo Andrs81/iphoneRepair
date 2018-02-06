@@ -128,13 +128,14 @@ function changeState($formControl){
   }
 }
 
-let ipModel, phone, scolor, address, floor, email, phoneNumber, instructions, name, pNumber, problems, more, dataString;
+let ipModel, phone, scolor, address, floor, email, phoneNumber, instructions, name, pNumber, problems, more, dataString, code;
 const mq = matchMedia('(min-width: 768px)').matches;
 //const email = $('#email').val();
 
 address =       $('#address').val();
 floor =         $('#floor').val();
 instructions =  $('#instructions').val();
+code =          $('#code').val();
 email =         $('#email').val();
 name =          $('#name').val();
 phoneNumber =   $('#phoneNumber').val();
@@ -380,7 +381,7 @@ if (mq) {
       address =       $('#address').val();
       floor =         $('#floor').val();
       instructions =  $('#instructions').val();
-      instructions =     $('#instructions').val();
+      code =     $('#code').val();
       
       if(more == null)
         more = "";
@@ -396,7 +397,7 @@ if (mq) {
         "phoneNumber" : phoneNumber,
         "address" : address,
         "floor" : floor,
-        "instructions" : instructions,
+        "code" : code,
         "fechaFinal" : fechaFinal,
         "visitTime" : visitTime,
         "total" : total,
@@ -408,7 +409,7 @@ if (mq) {
       //window.location.replace("http://ifixorlando.com/summary.html");
     }
 
-    console.log(`name ${name}, email ${email }, phoneNumber ${phoneNumber} --- address ${address}, floor ${floor }, instructions ${instructions}`);
+    console.log(`name ${name}, email ${email }, phoneNumber ${phoneNumber} --- address ${address}, floor ${floor }, instructions ${instructions}, code ${code}`);
 
 
         /*$('.address').val().length;
@@ -608,7 +609,7 @@ if (mq) {
         "phoneNumber" : phoneNumber,
         "address" : address,
         "floor" : floor,
-        "instructions" : instructions,
+        "code" : code,
         "fechaFinal" : fechaFinal,
         "visitTime" : visitTime,
         "total" : total,
@@ -1158,6 +1159,7 @@ $('.submit .btn').on('click',function(e){
     Price for the repair:$${price.toFixed(2)}
     address: ${address} ${floor} 
     Instruccions: ${instruccions},
+    Promo Code: ${code},
     Email: ${email}, 
     Phone number: ${pNumber}
     Name ${name}</h1>`);

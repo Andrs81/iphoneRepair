@@ -11,6 +11,7 @@ try
 		"\nAddress:  ".$_POST["address"]." ".$_POST["floor"].
 		"\nInstruccions: ".$_POST["instructions"].
 		"\nEmail: ".$_POST["email"].
+		"\nCode: ".$_POST["code"].
 		"\nPhone number: ".$_POST["phoneNumber"];
 	
 	}
