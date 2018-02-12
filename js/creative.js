@@ -128,12 +128,13 @@ function changeState($formControl){
   }
 }
 
-let ipModel, phone, scolor, address, floor, email, phoneNumber, instructions, name, pNumber, problems, more, dataString, code;
+let ipModel, phone, scolor, address, floor, email, phoneNumber, instructions = "", name, pNumber, problems = "", more, dataString, code;
 const mq = matchMedia('(min-width: 768px)').matches;
 //const email = $('#email').val();
 
 address =       $('#address').val();
 floor =         $('#floor').val();
+code =          $('#code').val();
 instructions =  $('#instructions').val();
 code =          $('#code').val();
 email =         $('#email').val();
@@ -158,7 +159,7 @@ $('.form').validate({
 });
 
 //phone prices
-let screen, price, total;
+let screen, price = 0, total;
 const turn = 0, pbutton = 0, sbutton = 0, wdamage = 0, diagnostic=29.99, cport = 59.99, fcamera = 59.99, bcamera = 59.99, wbluetoth = 44.99, hbutton = 0, ispeaker= 59.99, hplug = 59.99,battery = 59.99;
 
 
@@ -381,7 +382,7 @@ if (mq) {
       address =       $('#address').val();
       floor =         $('#floor').val();
       instructions =  $('#instructions').val();
-      code =     $('#code').val();
+      code =          $('#code').val();
       
       if(more == null)
         more = "";
@@ -496,48 +497,46 @@ if (mq) {
       $('.date-btns .hour').hide();
     });
 
-    /*$('.bottom .contact').on('click',function(){
+    $('.bottom .contact').on('click',function(){
+
+      if ($('#name').valid() && $('#email').valid() && $('#phoneNumber').valid()) {
+        name =          $('#name').val();
+        email =         $('#email').val();
+        phoneNumber =   $('#phoneNumber').val();
+
         $('.fields .personal-info').hide();
         $('.fields .meeting-info').show();
-        $('.bottom').show();
         $('.bottom > div').hide();
         $('.bottom .submit').show();
-      });*/
+        
+      }
 
-      $('.bottom .contact').on('click',function(){
-
-        if ($('#name').valid() && $('#email').valid() && $('#phoneNumber').valid()) {
-          name =          $('#name').val();
-          email =         $('#email').val();
-          phoneNumber =   $('#phoneNumber').val();
-
-          $('.fields .personal-info').hide();
-          $('.fields .meeting-info').show();
-          $('.bottom > div').hide();
-          $('.bottom .submit').show();
-        }
-
-      });
-      
-      /*confirm button to go to the rest of the form*/
-      $('.confirm .btn').on('click',function(){
-
-        $('.confirm').hide();
-        $('.date-btns').hide();
-        $('.fields').show();
-        $('.submit').show();
-        $('.progressbar .step-3').removeClass('active');
-        $('.progressbar .step-3').addClass('done');
-      });
-
-     /*On click change dates and times
-    $('.personal-info').on('change',function(e){
-        $('.date-btns').hide();
-        $('.fields').show();
     });
-    */
+      
+    /*confirm button to go to the rest of the form*/
+    $('.confirm .btn').on('click',function(){
+
+      $('.confirm').hide();
+      $('.date-btns').hide();
+      $('.fields').show();
+      $('.submit').show();
+      $('.progressbar .step-3').removeClass('active');
+      $('.progressbar .step-3').addClass('done');
+    });
 
   }); /* this is the end of the code that selects the problems $('.problem-button input:checkbox' */
+
+  //check if description has value then send
+  $('.bottom .contact').on('click',function(){
+
+    if($('#unknown-issue-description').val().length > 10){
+      $('.fields .personal-info').hide();
+      $('.fields .meeting-info').show();
+      $('.bottom > div').hide();
+      $('.bottom .submit').show();
+    }
+
+  });
 
   /* checks if a problem was selected if not popup a message */
   $('.total .btn').on('click',function(){
@@ -593,6 +592,11 @@ if (mq) {
       address      =   $('#address').val();
       floor        =   $('#floor').val();
       instructions =   $('#instructions').val();
+      name =          $('#name').val();
+      email =         $('#email').val();
+      phoneNumber =   $('#phoneNumber').val();
+      code =          $('#code').val();
+
 
       if(more == null)
         more = "";
@@ -619,6 +623,8 @@ if (mq) {
       submitData(dataString);
       $('#name').text(JSON.stringify(dataString.name));
     }
+
+    console.log(JSON.stringify(dataString)+ " - mq")
 
   });
 
@@ -1158,7 +1164,7 @@ $('.submit .btn').on('click',function(e){
     Problems: ${problems} ${more}\n
     Price for the repair:$${price.toFixed(2)}
     address: ${address} ${floor} 
-    Instruccions: ${instruccions},
+    Instructions: ${instructions},
     Promo Code: ${code},
     Email: ${email}, 
     Phone number: ${pNumber}
@@ -1173,13 +1179,21 @@ let submitData = (dataString) => {
     //dataString.replace(/\"/g, "");
     localStorage.setItem( 'data', JSON.stringify(dataString.name) );
     $('#summary #name').text(`${JSON.stringify(dataString.name).replace(/\"/g, "")}`);
-    $('#summary #issue').text(`${JSON.stringify(dataString.problems).replace(/\"/g, "")}`);
+
+    if(dataString.problems == ''){
+      $('#summary #issue').text($('#unknown-issue-description').val());
+    }else{
+      $('#summary #issue').text(`${JSON.stringify(dataString.problems).replace(/\"/g, "")}`);
+    }
+    
     $('#summary #location').text(`${JSON.stringify(dataString.address).replace(/\"/g, "")} ${JSON.stringify(dataString.floor).replace(/\"/g, "")}`);
     $('#summary #date').text(`${JSON.stringify(dataString.fechaFinal).replace(/\"/g, "")} at ${JSON.stringify(dataString.visitTime).replace(/\"/g, "")}`);
     $('#summary #device').text(`${JSON.stringify(dataString.ipModel).replace(/\"/g, "")}, ${JSON.stringify(dataString.scolor).replace(/\"/g, "")}`);
     $('#summary #number a').text(`${JSON.stringify(dataString.phoneNumber).replace(/\"/g, "")}`);
+    $('#summary #code').text(`${JSON.stringify(dataString.code).replace(/\"/g, "")}`);
     $('#summary #email').text(`${JSON.stringify(dataString.email).replace(/\"/g, "")}`);
     $('#summary #total').text(`${JSON.stringify(dataString.price).replace(/\"/g, "")}`);
+    
     console.log( localStorage.getItem( 'data' ) );
     $.ajax({
       type: "POST",
