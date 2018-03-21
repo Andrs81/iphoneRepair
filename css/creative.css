@@ -243,7 +243,7 @@ footer.navbar-inverse .text-primary,
 }
 
 .repair-schedule .section-heading{
-  margin-top: 120px;
+  margin-top: 110px;
   font-size: 24px !important;
 }
 .section-heading .phone-title{
@@ -1012,23 +1012,29 @@ footer ul li a{
   -webkit-animation: dash 2s ease-in-out;
 }
 
+/*Bullet points*/
+.bullets{}
+.bullets .bullet-title{
+  text-align: center;
+}
+.bullets .bullets-list{}
+.bullets .bullets-list .bullet{
+  list-style: none;
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+.bullets .bullets-list .bullet i{
+  color:rgba(53,170,101,100);
+  padding: 5px;
+}
+
 #summary  .spin {
   animation: spin 2s;
   -webkit-animation: spin 2s;
   transform-origin: 50% 50%;
   -webkit-transform-origin: 50% 50%;
 }
-
-/*#summary p {
-  font-family: sans-serif;
-  color: pink;
-  font-size: 30px;
-  font-weight: bold;
-  margin: 20px auto;
-  text-align: center;
-  animation: text .5s linear .4s;
-  -webkit-animation: text .4s linear .3s;
-  }*/
 
   #summary .bold {
     font-weight: 700;
@@ -1040,8 +1046,6 @@ footer ul li a{
   }
   #summary .next ul {
     text-align: justify;
-  /*width: 80%;
-  padding-left: 20%;*/
 }
 #summary .next .buttons-section {
   margin: 25px 0;
@@ -1283,8 +1287,6 @@ footer ul li a{
   #summary .main-text{
     font-size: 24px;
   }
-
-
 
 }
 @media (max-width: 768px) {

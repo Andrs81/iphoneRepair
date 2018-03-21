@@ -160,7 +160,7 @@ $('.form').validate({
 
 //phone prices
 let screen, price = 0, total;
-const turn = 0, pbutton = 0, sbutton = 0, wdamage = 0, diagnostic=29.99, cport = 59.99, fcamera = 59.99, bcamera = 59.99, wbluetoth = 44.99, hbutton = 0, ispeaker= 59.99, hplug = 59.99,battery = 59.99;
+const turn = 0, pbutton = 0, sbutton = 0, wdamage = 0, diagnostic=19.99, cport = 49.99, fcamera = 49.99, bcamera = 49.99, wbluetoth = 49.99, hbutton = 49.99, ispeaker= 49.99, hplug = 59.99,battery = 49.99;
 
 
 /* repairing process buttons */
@@ -789,7 +789,7 @@ $('.phone-button input[type=radio]').change(function(){
     case '5C':
     case '5S':
     case 'SE':
-    screen=59.99;
+    screen=54.99;
     break;
     case '6':
     screen=69.99;
@@ -801,7 +801,7 @@ $('.phone-button input[type=radio]').change(function(){
     screen=89.99;
     break;
     case '6S Plus':
-    screen=99.99;
+    screen=89.99;
     break;
     case '7':
     case '7 Plus':
@@ -834,7 +834,7 @@ console.log('phone ' + phone)
   });
 
 $('.problem-button.turn input:checkbox, .problem-button.pbutton input:checkbox, .problem-button.sbutton input:checkbox, .problem-button.wdamage input:checkbox, .problem-button.hbutton input:checkbox').change(function(){
-  if($('.problem-button.turn, .problem-button.pbutton, .problem-button.sbutton, .problem-button.wdamage, .problem-button.hbutton').hasClass('active'))
+  if($('.problem-button.turn, .problem-button.pbutton, .problem-button.sbutton, .problem-button.wdamage').hasClass('active'))
     alert("To Be Determined");
 });
 $('.problem-button input:checkbox').change(function(){
