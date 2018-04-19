@@ -19,7 +19,7 @@ try
 	$headers = "From: ifixorlando@website.com" . "\r\n" ."CC: somebodyelse@example.com";
 	$headers .= "Content-Type: text/html; charset=iso-8859-1\r\n";
 
-	mail('kristen.mannix@hotmail.com', 'iFixOrlando - iPhone repair request', $message, $headers); 
+	mail('kristen.mannix@hotmail.com, 4074937836@messaging.sprintpcs.com', 'iFixOrlando - iPhone repair request', $message, $headers); 
 
 
 }
