@@ -913,7 +913,7 @@ footer ul li a{
   word-wrap: break-word;
   white-space: normal;
   font-size: 15px;
-  text-transform: lowercase;
+  text-transform: none;
 }
 .chose-problem .other-issues p.btn-name {
   width: 60% !important;
