@@ -160,7 +160,7 @@ $('.form').validate({
 
 //phone prices
 let screen, price = 0, total;
-const turn = 0, pbutton = 0, sbutton = 0, wdamage = 0, diagnostic=19.99, cport = 49.99, fcamera = 49.99, bcamera = 49.99, wbluetoth = 49.99, hbutton = 49.99, ispeaker= 49.99, hplug = 59.99,battery = 49.99;
+const turn = 0, pbutton = 0, sbutton = 0, wdamage = 0, diagnostic=19.99, cport = 59.99, fcamera = 59.99, bcamera = 59.99, wbluetoth = 59.99, hbutton = 59.99, ispeaker= 59.99, hplug = 59.99,battery = 59.99;
 
 
 /* repairing process buttons */
@@ -805,7 +805,7 @@ $('.phone-button input[type=radio]').change(function(){
     break;
     case '7':
     case '7 Plus':
-    screen=109.99;
+    screen=99;
     break;
     case '8':
     case '8 Plus':
@@ -822,8 +822,6 @@ $('.turn input[type=checkbox]').attr('rel',0);
 $('.diagnostic input[type=checkbox]').attr('rel',0);
 $('.other input[type=checkbox]').attr('rel',0);
 
-console.log('antes');
-console.log('phone ' + phone)
   $('.problem-button.screen input:checkbox').change(function(){
     if(phone == "X"){
       if($('.problem-button.screen').hasClass('active'))
@@ -888,33 +886,31 @@ for (var i = 0; i < 5; i++) {
 
   switch (i) {
     case 0:
-    $('.today input[type=radio]').attr({day:day,number:number});
-        /*$('.today .date-inner .date-day').text(day);
-        $('.today .date-inner .date-number').text(number);*/
-        $('.today .date-inner').text('Today');
-        break;
-        case 1:
-        $('.day1 input[type=radio]').attr({day:day,number:number});
-        $('.day1 .date-inner .date-day').text(day);
-        $('.day1 .date-inner .date-number').text(number);
-        break;
-        case 2:
-        $('.day2 input[type=radio]').attr({day:day,number:number});
-        $('.day2 .date-inner .date-day').text(day);
-        $('.day2 .date-inner .date-number').text(number);
-        break;
-        case 3:
-        $('.day3 input[type=radio]').attr({day:day,number:number});
-        $('.day3 .date-inner .date-day').text(day);
-        $('.day3 .date-inner .date-number').text(number);
-        break;
-        case 4:
-        $('.day4 input[type=radio]').attr({day:day,number:number});
-        $('.day4 .date-inner .date-day').text(day);
-        $('.day4 .date-inner .date-number').text(number);
-        break;
-      }
-    }
+      $('.today input[type=radio]').attr({day:day,number:number});
+      $('.today .date-inner').text('Today');
+    break;
+    case 1:
+      $('.day1 input[type=radio]').attr({day:day,number:number});
+      $('.day1 .date-inner .date-day').text(day);
+      $('.day1 .date-inner .date-number').text(number);
+    break;
+    case 2:
+      $('.day2 input[type=radio]').attr({day:day,number:number});
+      $('.day2 .date-inner .date-day').text(day);
+      $('.day2 .date-inner .date-number').text(number);
+    break;
+    case 3:
+      $('.day3 input[type=radio]').attr({day:day,number:number});
+      $('.day3 .date-inner .date-day').text(day);
+      $('.day3 .date-inner .date-number').text(number);
+    break;
+    case 4:
+      $('.day4 input[type=radio]').attr({day:day,number:number});
+      $('.day4 .date-inner .date-day').text(day);
+      $('.day4 .date-inner .date-number').text(number);
+    break;
+  }
+}
 
     /* Esta debe configurarse para ser enviada al servidor*/
     let fechaFinal, visitTime, innerValue;
@@ -1135,14 +1131,12 @@ if($('.today').hasClass('active')){
     $('.btn.hour-button:nth-child(13) .hour-inner').text('Within the next hour');
     $('.btn.hour-button:nth-child(13)').addClass('active');
   }
-  visitTime = innerValue;
-
+  // visitTime = innerValue;
+  // console.log(innerValue)
 }else{
   visitTime = $('.btn.hour-button:nth-child(1) input[type=radio]').val();
   $('.btn.hour-button').show();
-
 }
-
 
 /* Resets the date to todays date so it doesn't show the next month on the navbar */
 date = moment(today).format('llll');
